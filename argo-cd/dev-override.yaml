@@ -1,0 +1,12 @@
+server:
+  extraArgs: 
+   - --insecure
+  ingress:
+    # -- Enable an ingress resource for the Argo CD server
+    enabled: true
+    hosts:
+      - dev.example.com
+  config:
+    # Argo CD's externally facing base URL (optional). Required when configuring SSO
+    url: http://dev.example.com
+  replicas: 1

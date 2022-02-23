@@ -1,0 +1,30 @@
+ingress:
+  enabled: true
+  hosts:
+    - grafana.example.com
+datasources: 
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: Prometheus
+     type: prometheus
+     url: http://prometheus-server
+     access: proxy
+     isDefault: true
+dashboards:
+  default:
+    prometheus-stats:
+      Ref: https://grafana.com/dashboards/3662
+      gnetId: 3662
+      revision: 2
+      datasource: Prometheus
+    nginx-controller:
+      Ref: https://grafana.com/dashboards/9614
+      gnetId: 9614
+      revision: 1
+      datasource: Prometheus
+    kubernetes-cluster:
+      Ref: https://grafana.com/dashboards/6417
+      gnetId: 6417
+      revision: 1
+      datasource: Prometheus

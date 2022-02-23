@@ -1,0 +1,39 @@
+apiVersion: v1
+data:
+  ADMIN_EMAILS: ""
+  CONTACT_EMAIL: ""
+  CUSTOM_DOMAIN_USE_HTTPS: "false"
+  DB_HOST: postgres
+  DB_PORT: "5432"
+  DB_SSL: "false"
+  DEFAULT_DOMAIN: dev.example.com
+  DEFAULT_MAX_STATS_PER_LINK: "5000"
+  DISALLOW_ANONYMOUS_LINKS: "false"
+  DISALLOW_REGISTRATION: "false"
+  GOOGLE_ANALYTICS: ""
+  GOOGLE_ANALYTICS_UNIVERSAL: ""
+  GOOGLE_SAFE_BROWSING_KEY: ""
+  JWT_SECRET: securekey
+  LINK_LENGTH: "6"
+  MAIL_FROM: ""
+  MAIL_HOST: ""
+  MAIL_PASSWORD: ""
+  MAIL_PORT: ""
+  MAIL_SECURE: "true"
+  MAIL_USER: ""
+  NEO4J_DB_PASSWORD: pass
+  NEO4J_DB_URI: bolt://localhost
+  NEO4J_DB_USERNAME: neo4j
+  NON_USER_COOLDOWN: "0"
+  PORT: "3000"
+  RECAPTCHA_SECRET_KEY: ""
+  RECAPTCHA_SITE_KEY: ""
+  REDIS_HOST: redis
+  REDIS_PASSWORD: ""
+  REDIS_PORT: "6379"
+  REPORT_EMAIL: ""
+  SITE_NAME: Kutt
+  USER_LIMIT_PER_DAY: "50"
+kind: ConfigMap
+metadata:
+  name: kutt

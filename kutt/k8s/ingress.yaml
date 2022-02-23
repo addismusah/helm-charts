@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kutt
+spec:
+  selector:
+    app: kutt
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kutt
+spec:
+  rules:
+  - host: dev.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kutt
+            port:
+              number: 3000

@@ -1,0 +1,14 @@
+server:
+  enabled: true
+  ingress:
+    enabled: true
+    hosts:
+      - monitoring.example.com
+alertmanager:
+  enabled: true
+nodeExporter:
+  enabled: true
+pushgateway:
+  enabled: true
+kubeStateMetrics:
+  enabled: true

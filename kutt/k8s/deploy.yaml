@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kutt-deployment
+  labels:
+    app: kutt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kutt
+  template:
+    metadata:
+      labels:
+        app: kutt
+    spec:
+      containers:
+      - name: kutt
+        image: kutt/kutt
+        command: ["/bin/sh"]
+        args: ["-c", "./wait-for-it.sh postgres:5432 -- npm start"]
+        envFrom:
+          - configMapRef:
+              name: kutt
+          - secretRef:
+              name: kutt
+        ports:
+        - containerPort: 3000

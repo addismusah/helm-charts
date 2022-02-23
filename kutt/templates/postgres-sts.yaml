@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "kutt.fullname" . }}-postgres
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "kutt.fullname" . }}-postgres
+  serviceName: "postgres"
+  replicas: 1 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: {{ include "kutt.fullname" . }}-postgres
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: "{{ .Release.Name }}"
+        heritage: "{{ .Release.Service }}"
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: postgres
+        image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"
+        imagePullPolicy: {{ .Values.postgres.image.pullPolicy }}
+        ports:
+        - containerPort: 6379
+          name: postgres
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "kutt.fullname" . }}
+                key: DB_USER
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "kutt.fullname" . }}
+                key: DB_PASSWORD
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "kutt.fullname" . }}
+                key: DB_NAME
+        volumeMounts:
+        - name: postgres
+          mountPath: /data
+      volumes:
+        - name: postgres
+          persistentVolumeClaim:
+            claimName: {{ include "kutt.fullname" . }}-postgres

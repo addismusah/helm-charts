@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kutt.fullname" . }}-redis
+  labels:
+    {{- include "kutt.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - port: {{ .Values.redis.service.port }}
+      targetPort: 6379
+      protocol: TCP
+      name: redis
+  selector:
+    app: {{ include "kutt.fullname" . }}-redis

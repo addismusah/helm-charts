@@ -1,0 +1,7 @@
+ingress:
+  enabled: true
+  # className: 
+  hosts:
+    - host: logging.example.com
+      paths:
+        - path: /
