@@ -4,7 +4,7 @@ server:
     enabled: true
     hosts:
       - monitoring.example.com
-    extraPaths: []
+    extraPaths:
     - path: /
       backend:
         service:

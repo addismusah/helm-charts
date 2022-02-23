@@ -813,7 +813,8 @@ server:
     ## Prometheus server Ingress hostnames with optional path
     ## Must be provided if Ingress is enabled
     ##
-    hosts: []
+    hosts:
+      - monitoring.example.com
     #   - prometheus.domain.com
     #   - domain.com/prometheus
 
@@ -1157,8 +1158,7 @@ pushgateway:
     ## pushgateway Ingress hostnames with optional path
     ## Must be provided if Ingress is enabled
     ##
-    hosts:
-      - monitoring.example.com
+    hosts: []
     #   - pushgateway.domain.com
     #   - domain.com/pushgateway
 
@@ -1169,12 +1169,6 @@ pushgateway:
 
     ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
     extraPaths:
-    - path: /
-      backend:
-        service:
-            name: prometheus-server
-            port:
-              number: 80
     # - path: /*
     #   backend:
     #     serviceName: ssl-redirect
