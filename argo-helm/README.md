@@ -12,3 +12,4 @@ helm repo add argo https://argoproj.github.io/argo-helm
 ## Contributing
 
 We'd love to have you contribute! Please refer to our [contribution guidelines](CONTRIBUTING.md) for details.
+configured this chart for aws eks cluster.
