@@ -1,0 +1,13 @@
+server:
+  extraArgs:
+   - --insecure
+  ingress:
+    # --Enable an ingress resource for the Argo CD server
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - dev.example.com
+  config:
+    #Argo CD externally facing base URL (optional). 
+    url: http://dev.example.com
+  replicas: 1
